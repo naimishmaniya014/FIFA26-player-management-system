@@ -11,12 +11,12 @@
 
 ### 2. Import Data
 
-1. Locate the `CSE 412 F26` folder containing the CSV files on your computer.
+1. Locate the `datafiles` folder containing the CSV files on your computer.
 2. Open `database/Import_data_for_tables.sql` in a text editor.
 3. **CRITICAL STEP**: You must update the file paths in this script.
    - Find all occurrences of `D:/CSE412-project/`
-   - Replace them with the **absolute path** to the `CSE 412 F26` folder on your machine.
-   - *Example*: If your CSVs are in `C:/Users/Downloads/CSE 412 F26/`, update the paths to match.
+   - Replace them with the **absolute path** to the `datafiles` folder on your machine.
+   - *Example*: If your CSVs are in `C:/Users/Downloads/datafiles/`, update the paths to match.
 4. Copy the updated SQL content.
 5. Paste it into the **Query Tool** in pgAdmin and run it.
 
@@ -62,6 +62,6 @@
 
 ## Tech Stack
 
-- **Frontend**: React, Vite, Vanilla CSS
+- **Frontend**: React, Vite, Vanilla CSS (Glassmorphism design)
 - **Backend**: Node.js, Express
 - **Database**: PostgreSQL

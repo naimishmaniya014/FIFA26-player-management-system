@@ -1,5 +1,3 @@
--- FIFA 26 Player Management System Schema for Supabase
-
 -- DROP EXISTING TABLES (Order matters due to foreign keys)
 DROP TABLE IF EXISTS player_position CASCADE;
 DROP TABLE IF EXISTS player_country CASCADE;
@@ -77,7 +75,7 @@ CREATE TABLE ADDITIONAL_INFO (
     Age SMALLINT CHECK (Age >= 15 AND Age <= 50),
     DOB DATE,
     Release_clause BIGINT,
-    Preferred_Position VARCHAR(50),
+    Preferred_Position VARCHAR(100),
     Height DECIMAL(5,2),
     Weight DECIMAL(5,2),
     Wages DECIMAL(12,2),
@@ -161,24 +159,3 @@ CREATE INDEX idx_player_club ON PLAYER(Club_team_id);
 CREATE INDEX idx_player_name ON PLAYER(Short_name);
 CREATE INDEX idx_club_league ON CLUB(League_id);
 CREATE INDEX idx_league_country ON LEAGUE(Country_id);
-
--- POPULATE POSITION REFERENCE DATA
-INSERT INTO POSITION (Position_Code, Position_Name) VALUES
-('GK', 'Goalkeeper'),
-('CB', 'Center Back'),
-('LB', 'Left Back'),
-('RB', 'Right Back'),
-('LWB', 'Left Wing Back'),
-('RWB', 'Right Wing Back'),
-('CDM', 'Central Defensive Midfielder'),
-('CM', 'Center Midfielder'),
-('CAM', 'Central Attacking Midfielder'),
-('LM', 'Left Midfielder'),
-('RM', 'Right Midfielder'),
-('LW', 'Left Winger'),
-('RW', 'Right Winger'),
-('ST', 'Striker'),
-('CF', 'Center Forward'),
-('LF', 'Left Forward'),
-('RF', 'Right Forward')
-ON CONFLICT (Position_Code) DO NOTHING;

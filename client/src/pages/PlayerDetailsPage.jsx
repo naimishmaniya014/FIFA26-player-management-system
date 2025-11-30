@@ -9,10 +9,10 @@ const StatBar = ({ label, value, color = 'var(--primary)' }) => (
       <span style={{ fontWeight: 'bold' }}>{value}</span>
     </div>
     <div style={{ width: '100%', height: '6px', background: 'rgba(255,255,255,0.1)', borderRadius: '3px' }}>
-      <div style={{ 
-        width: `${value}%`, 
-        height: '100%', 
-        background: color, 
+      <div style={{
+        width: `${value}%`,
+        height: '100%',
+        background: color,
         borderRadius: '3px',
         transition: 'width 1s ease-out'
       }}></div>
@@ -44,7 +44,7 @@ const PlayerDetailsPage = () => {
 
   return (
     <div className="glass" style={{ padding: '2rem', borderRadius: '16px' }}>
-      <Link to="/" className="btn btn-outline" style={{ display: 'inline-block', marginBottom: '2rem', textDecoration: 'none' }}>
+      <Link to="/search" className="btn btn-outline" style={{ display: 'inline-block', marginBottom: '2rem', textDecoration: 'none' }}>
         ← Back to Search
       </Link>
 
@@ -52,9 +52,9 @@ const PlayerDetailsPage = () => {
         {/* Left Column: Basic Info */}
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', marginBottom: '2rem' }}>
-            <div style={{ 
-              width: '100px', 
-              height: '100px', 
+            <div style={{
+              width: '100px',
+              height: '100px',
               background: 'linear-gradient(135deg, var(--primary), var(--secondary))',
               borderRadius: '50%',
               display: 'flex',

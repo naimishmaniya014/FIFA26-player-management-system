@@ -29,7 +29,7 @@ const HomePage = () => {
       if (filters.league) params.append('league', filters.league);
       if (filters.club) params.append('club', filters.club);
       if (filters.position) params.append('position', filters.position);
-      
+
       const response = await axios.get(`http://localhost:3000/api/players/search?${params.toString()}`);
       setPlayers(response.data);
     } catch (error) {
@@ -72,29 +72,29 @@ const HomePage = () => {
     <div>
       <div className="glass" style={{ padding: '2rem', borderRadius: '16px', marginBottom: '2rem' }}>
         <h1 className="text-gradient" style={{ marginBottom: '2rem', textAlign: 'center' }}>Find Players</h1>
-        
+
         <form onSubmit={handleSearch} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
-          <input 
-            name="name" 
-            placeholder="Player Name" 
+          <input
+            name="name"
+            placeholder="Player Name"
             value={filters.name}
             onChange={handleFilterChange}
           />
-          <input 
-            name="position" 
-            placeholder="Position (e.g. ST, CM)" 
+          <input
+            name="position"
+            placeholder="Position (e.g. ST, CM)"
             value={filters.position}
             onChange={handleFilterChange}
           />
-          <input 
-            name="club" 
-            placeholder="Club" 
+          <input
+            name="club"
+            placeholder="Club"
             value={filters.club}
             onChange={handleFilterChange}
           />
-          <input 
-            name="league" 
-            placeholder="League" 
+          <input
+            name="league"
+            placeholder="League"
             value={filters.league}
             onChange={handleFilterChange}
           />
@@ -115,16 +115,16 @@ const HomePage = () => {
             if (!aSelected && bSelected) return 1;
             return 0;
           }).map(player => (
-            <PlayerCard 
-              key={player.player_id} 
-              player={player} 
+            <PlayerCard
+              key={player.player_id}
+              player={player}
               onCompare={toggleCompare}
               isSelected={!!compareList.find(p => p.player_id === player.player_id)}
             />
           ))}
         </div>
       )}
-      
+
       {players.length === 0 && !loading && (
         <div style={{ textAlign: 'center', color: 'var(--text-secondary)', marginTop: '2rem' }}>
           No players found. Try adjusting your filters.

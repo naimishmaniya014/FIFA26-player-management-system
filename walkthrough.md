@@ -2,28 +2,35 @@
 
 ## Setup Instructions
 
-### 1. Database Setup (Supabase)
+### 1. Database Setup (Local PostgreSQL / pgAdmin)
 
-1. Create a new project on [Supabase](https://supabase.com/).
-2. Go to the **SQL Editor** in Supabase and copy-paste the content of `database/schema.sql` to create the tables. Run the query.
-3. Get your database connection string from **Project Settings > Database > Connection string > URI**.
-   - It should look like: `postgresql://postgres:[YOUR-PASSWORD]@db.[YOUR-PROJECT-REF].supabase.co:5432/postgres`
-4. Update `server/.env` with this connection string.
-   ```
-   DATABASE_URL=postgresql://postgres:[YOUR-PASSWORD]@db.[YOUR-PROJECT-REF].supabase.co:5432/postgres
-   ```
+1. Ensure you have **PostgreSQL** and **pgAdmin** installed.
+2. Create a new database (e.g., `fifa26`) in pgAdmin.
+3. Open the **Query Tool** for your new database.
+4. Open `database/schema.sql`, copy its content, paste it into the Query Tool, and run it to create the tables.
 
 ### 2. Import Data
 
-1. Open `database/import_to_supabase.py`.
-2. Update the `DB_CONFIG` dictionary at the top of the file with your Supabase credentials (host, password, etc.).
-3. Run the script:
-   ```bash
-   python3 database/import_to_supabase.py
-   ```
-   _Note: Ensure you have `pandas` and `psycopg2` installed (`pip install pandas psycopg2-binary`)._
+1. Locate the `CSE 412 F26` folder containing the CSV files on your computer.
+2. Open `database/Import_data_for_tables.sql` in a text editor.
+3. **CRITICAL STEP**: You must update the file paths in this script.
+   - Find all occurrences of `D:/CSE412-project/`
+   - Replace them with the **absolute path** to the `CSE 412 F26` folder on your machine.
+   - *Example*: If your CSVs are in `C:/Users/Downloads/CSE 412 F26/`, update the paths to match.
+4. Copy the updated SQL content.
+5. Paste it into the **Query Tool** in pgAdmin and run it.
 
-### 3. Start the Backend
+### 3. Server Configuration
+
+1. Create a `.env` file in the `server/` directory.
+2. Add your database connection string:
+   ```env
+   DATABASE_URL=postgresql://postgres:password@localhost:5432/fifa26
+   PORT=3000
+   ```
+   *Replace `password` and `fifa26` with your actual postgres password and database name.*
+
+### 4. Start the Backend
 
 1. Navigate to the server directory:
    ```bash
@@ -35,7 +42,7 @@
    ```
    The server will run on `http://localhost:3000`.
 
-### 4. Start the Frontend
+### 5. Start the Frontend
 
 1. Open a new terminal and navigate to the client directory:
    ```bash
@@ -55,6 +62,6 @@
 
 ## Tech Stack
 
-- **Frontend**: React, Vite, Vanilla CSS (Glassmorphism design)
-- **Backend**: Node.js, Express, PostgreSQL (pg)
-- **Database**: Supabase (PostgreSQL)
+- **Frontend**: React, Vite, Vanilla CSS
+- **Backend**: Node.js, Express
+- **Database**: PostgreSQL

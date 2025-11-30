@@ -4,16 +4,17 @@ import PlayerDetailsPage from './pages/PlayerDetailsPage';
 import ComparePage from './pages/ComparePage';
 import AdminPage from './pages/AdminPage';
 import PlayerFormPage from './pages/PlayerFormPage';
+import WelcomePage from './pages/WelcomePage';
 import './styles/index.css';
 
 function Navbar() {
   const location = useLocation();
-  
+
   return (
     <nav className="navbar glass">
       <Link to="/" className="nav-brand">FIFA 26 MANAGER</Link>
       <div className="nav-links">
-        <Link to="/" className={location.pathname === '/' ? 'active' : ''}>Search</Link>
+        <Link to="/search" className={location.pathname === '/search' ? 'active' : ''}>Search</Link>
         <Link to="/compare" className={location.pathname === '/compare' ? 'active' : ''}>Compare</Link>
         <Link to="/admin" className={location.pathname.startsWith('/admin') ? 'active' : ''}>Admin</Link>
       </div>
@@ -27,7 +28,8 @@ function App() {
       <Navbar />
       <main className="container">
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<WelcomePage />} />
+          <Route path="/search" element={<HomePage />} />
           <Route path="/player/:id" element={<PlayerDetailsPage />} />
           <Route path="/compare" element={<ComparePage />} />
           <Route path="/admin" element={<AdminPage />} />

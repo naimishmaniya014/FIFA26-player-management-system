@@ -25,7 +25,7 @@ const AdminPage = () => {
 
   const handleDelete = async (id) => {
     if (!window.confirm('Are you sure you want to delete this player? This action cannot be undone.')) return;
-    
+
     try {
       await axios.delete(`http://localhost:3000/api/players/${id}`);
       setPlayers(players.filter(p => p.player_id !== id));
@@ -51,7 +51,7 @@ const AdminPage = () => {
       </div>
 
       <form onSubmit={handleSearch} style={{ marginBottom: '2rem', display: 'flex', gap: '1rem' }}>
-        <input 
+        <input
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           placeholder="Search by name..."
@@ -87,7 +87,7 @@ const AdminPage = () => {
                     <Link to={`/admin/edit/${player.player_id}`} className="btn btn-outline" style={{ padding: '0.5rem 1rem', fontSize: '0.9rem', textDecoration: 'none' }}>
                       Edit
                     </Link>
-                    <button 
+                    <button
                       onClick={() => handleDelete(player.player_id)}
                       className="btn"
                       style={{ padding: '0.5rem 1rem', fontSize: '0.9rem', background: 'rgba(239, 68, 68, 0.2)', color: '#ef4444', border: '1px solid rgba(239, 68, 68, 0.5)' }}

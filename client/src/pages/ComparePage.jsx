@@ -37,7 +37,7 @@ const ComparePage = () => {
   const removeFromCompare = (id) => {
     const newList = players.filter(p => p.player_id !== id);
     setPlayers(newList);
-    
+
     // Update local storage
     const saved = JSON.parse(localStorage.getItem('compareList') || '[]');
     const newSaved = saved.filter(p => p.player_id !== id);
@@ -53,7 +53,7 @@ const ComparePage = () => {
         <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem' }}>
           Go back to the search page and select players to compare.
         </p>
-        <Link to="/" className="btn btn-primary" style={{ textDecoration: 'none' }}>
+        <Link to="/search" className="btn btn-primary" style={{ textDecoration: 'none' }}>
           Find Players
         </Link>
       </div>
@@ -80,7 +80,7 @@ const ComparePage = () => {
   return (
     <div className="glass" style={{ padding: '2rem', borderRadius: '16px', overflowX: 'auto' }}>
       <h1 className="text-gradient" style={{ marginBottom: '2rem', textAlign: 'center' }}>Player Comparison</h1>
-      
+
       <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '600px' }}>
         <thead>
           <tr>
@@ -92,12 +92,12 @@ const ComparePage = () => {
                   <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', fontWeight: 'normal' }}>
                     {player.player_position}
                   </div>
-                  <button 
+                  <button
                     onClick={() => removeFromCompare(player.player_id)}
-                    style={{ 
-                      background: 'transparent', 
-                      border: 'none', 
-                      color: '#ef4444', 
+                    style={{
+                      background: 'transparent',
+                      border: 'none',
+                      color: '#ef4444',
                       cursor: 'pointer',
                       fontSize: '0.8rem'
                     }}
@@ -118,9 +118,9 @@ const ComparePage = () => {
                   {stat.label}
                 </td>
                 {players.map(player => (
-                  <td key={player.player_id} style={{ 
-                    padding: '1rem', 
-                    textAlign: 'center', 
+                  <td key={player.player_id} style={{
+                    padding: '1rem',
+                    textAlign: 'center',
                     borderBottom: '1px solid rgba(255,255,255,0.05)',
                     fontWeight: (player[stat.key] === best && best > 0) ? 'bold' : 'normal',
                     color: (player[stat.key] === best && best > 0) ? 'var(--primary)' : 'inherit'

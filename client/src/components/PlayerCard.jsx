@@ -18,17 +18,17 @@ const PlayerCard = ({ player, onCompare, isSelected }) => {
             {player.player_position}
           </div>
         </div>
-        <div style={{ 
-          background: 'rgba(0,0,0,0.3)', 
-          padding: '0.5rem', 
+        <div style={{
+          background: 'rgba(0,0,0,0.3)',
+          padding: '0.5rem',
           borderRadius: '8px',
           textAlign: 'center',
           minWidth: '40px'
         }}>
-          <div style={{ 
-            fontSize: '1.5rem', 
-            fontWeight: 'bold', 
-            color: getRatingColor(player.overall) 
+          <div style={{
+            fontSize: '1.5rem',
+            fontWeight: 'bold',
+            color: getRatingColor(player.overall)
           }}>
             {player.overall}
           </div>
@@ -55,7 +55,7 @@ const PlayerCard = ({ player, onCompare, isSelected }) => {
         <Link to={`/player/${player.player_id}`} className="btn btn-primary" style={{ flex: 1, textAlign: 'center', textDecoration: 'none' }}>
           View
         </Link>
-        <button 
+        <button
           className={`btn ${isSelected ? 'btn-primary' : 'btn-outline'}`}
           onClick={() => onCompare(player)}
           style={{ padding: '0.75rem' }}

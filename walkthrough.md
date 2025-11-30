@@ -62,6 +62,6 @@
 
 ## Tech Stack
 
-- **Frontend**: React, Vite, Vanilla CSS (Glassmorphism design)
+- **Frontend**: React, Vite, Vanilla CSS
 - **Backend**: Node.js, Express
 - **Database**: PostgreSQL

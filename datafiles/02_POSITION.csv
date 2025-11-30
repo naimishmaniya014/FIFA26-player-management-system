@@ -1,0 +1,18 @@
+Position_Code,Position_Name
+GK,Goalkeeper
+CB,Center Back
+LB,Left Back
+RB,Right Back
+LWB,Left Wing Back
+RWB,Right Wing Back
+CDM,Central Defensive Midfielder
+CM,Center Midfielder
+CAM,Central Attacking Midfielder
+LM,Left Midfielder
+RM,Right Midfielder
+LW,Left Winger
+RW,Right Winger
+ST,Striker
+CF,Center Forward
+LF,Left Forward
+RF,Right Forward

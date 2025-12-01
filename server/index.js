@@ -31,6 +31,63 @@ pool.connect((err, client, release) => {
     console.log("Connected to Database:", result.rows[0]);
   });
 });
+
+// 1. Search Players
+app.get("/api/players/search", async (req, res) => {
+  try {
+    const { name, league, club, position } = req.query;
+
+    let query = `
+      SELECT p.Player_id, p.Short_name, p.Overall, p.Player_position,
+             c.Nationality_name, cl.Club_name, l.League_name,
+             r.Passing, r.Defending, r.Dribbling, r.Pace, r.Shooting, r.Physic,
+             ai.Age, ai.Height, ai.Weight
+      FROM PLAYER p
+      LEFT JOIN COUNTRY c ON p.Nationality_id = c.Nationality_id
+      LEFT JOIN CLUB cl ON p.Club_team_id = cl.Club_team_id
+      LEFT JOIN LEAGUE l ON cl.League_id = l.League_id
+      LEFT JOIN RATINGS r ON p.Player_id = r.Player_id
+      LEFT JOIN ADDITIONAL_INFO ai ON p.Player_id = ai.Player_id
+      WHERE 1=1
+    `;
+
+    const params = [];
+    let paramCount = 1;
+
+    if (name) {
+      query += ` AND p.Short_name ILIKE $${paramCount}`;
+      params.push(`%${name}%`);
+      paramCount++;
+    }
+
+    if (position) {
+      query += ` AND p.Player_position ILIKE $${paramCount}`;
+      params.push(`%${position}%`);
+      paramCount++;
+    }
+
+    if (club) {
+      query += ` AND cl.Club_name ILIKE $${paramCount}`;
+      params.push(`%${club}%`);
+      paramCount++;
+    }
+
+    if (league) {
+      query += ` AND l.League_name ILIKE $${paramCount}`;
+      params.push(`%${league}%`);
+      paramCount++;
+    }
+
+    query += ` ORDER BY p.Overall DESC LIMIT 100`;
+
+    const result = await pool.query(query, params);
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
 // 2. Compare Players
 app.get("/api/players/compare/data", async (req, res) => {
   try {

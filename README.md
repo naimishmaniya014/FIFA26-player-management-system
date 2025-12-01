@@ -61,7 +61,8 @@
 - **Search**: Filter players by name, league, club, or position.
 - **Player Details**: Click "View" on any player card to see detailed stats, including a visual breakdown of their ratings.
 - **Comparison**: Click the "+" button on up to 4 players to add them to the comparison list. Click "Compare" in the navbar to see them side-by-side.
-
+- **Management**: Access the admin panel to add, delete, and modify player data within the database.
+  
 ## Tech Stack
 
 - **Frontend**: React, Vite, Vanilla CSS

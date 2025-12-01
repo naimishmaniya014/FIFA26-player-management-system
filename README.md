@@ -32,9 +32,10 @@
 
 ### 4. Start the Backend
 
-1. Navigate to the server directory:
+1. Navigate to the server directory and install dependencies:
    ```bash
    cd server
+   npm install
    ```
 2. Start the server:
    ```bash
@@ -44,9 +45,10 @@
 
 ### 5. Start the Frontend
 
-1. Open a new terminal and navigate to the client directory:
+1. Open a new terminal, navigate to the client directory, and install dependencies:
    ```bash
    cd client
+   npm install
    ```
 2. Start the development server:
    ```bash
